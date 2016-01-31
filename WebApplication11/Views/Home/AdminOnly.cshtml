@@ -1,0 +1,59 @@
+﻿@{
+    if (Request.IsAuthenticated && (User.IsInRole("Admin")))
+    {
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("Admin", "AdminOnly", "Home");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("Managers", "ManagerArea", "Home");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("SecureArea", "SecureArea");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("Logout", "Logout");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.Raw(User.Identity.Name);
+    }
+    if (Request.IsAuthenticated && (User.IsInRole("Manager")))
+    {
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("Manager", "ManagerArea", "Home");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("SecureArea", "SecureArea");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("Logout", "Logout");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.Raw(User.Identity.Name);
+
+    }
+    if (Request.IsAuthenticated && (User.IsInRole("Staff")))
+    {
+        @Html.ActionLink("SecureArea", "SecureArea");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.ActionLink("Logout", "Logout");
+        @Html.Raw("&nbsp;|&nbsp;");
+        @Html.Raw(User.Identity.Name);
+    }
+}    
+
+<div>
+
+    <h2>For Administration Only</h2>
+    You are in the secure area which is available to authenticated Admins.
+
+</div>
+
+
+
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminOnly</title>
+</head>
+<body>
+    <div> 
+    </div>
+</body>
+</html>
